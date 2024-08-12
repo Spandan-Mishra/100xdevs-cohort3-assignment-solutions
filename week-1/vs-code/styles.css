@@ -1,0 +1,86 @@
+body {
+    background-color: #0f0f0f;
+    color: white;
+}
+
+nav {
+    background-color: #0f0f0f;
+    padding: 14px 150px;
+}
+
+a {
+    color: #86899a;
+    text-decoration: none;
+    padding: 0px 10px;
+}
+
+.a-blue {
+    color:rgb(23, 151, 236);
+    text-decoration: underline;
+    padding: 0px;
+}
+
+#vs-code {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right:5px;
+}
+
+#search {
+    margin: 0px 10px;
+    padding: 2px;
+    background-color: black;
+    color: #9d9d9d;
+    border-color: #898989;
+    border-width: 1px;
+    border-radius: 8px;
+}
+
+#download {
+    background-color: rgb(19, 133, 209);
+    color: white;
+    border-radius: 8px;
+    padding: 2px 20px;
+}
+
+#version {
+    padding: 20px 500px;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 60px !important;
+    color: white;
+    font-weight: 500 !important;
+}
+
+#hero-tag {
+    color: #86899a;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 32px;
+    background-color: #1b1a1a;
+    border: 0.1px solid #86899a;
+    color: #e3e3e3;
+    width: max-content;
+    margin-bottom: 10px;
+}
+
+#hero-download {
+    background-color: rgb(19, 133, 209);
+    color: white;
+    padding: 10px 20px;
+    font-size: large;
+    font-weight: bold;
+}
+
+p {
+    font-size: smaller;
+    color:#86899a;
+}
+
+.text:hover {
+    color: white;
+    transition: 0.2s;
+}
