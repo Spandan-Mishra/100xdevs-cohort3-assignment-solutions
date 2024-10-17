@@ -26,7 +26,7 @@ const TableData = ({ pets }) => {
               <td>{pet.breed}</td>
               <td>{pet.owner}</td>
               <td>{pet.contact}</td>
-              <td><img src={pet.image} alt={pet.name} style={{ width:"50px", height:"50px" }} /></td>
+              <td><img src={pet.image} alt={pet.name} style={{ width:"70px", height:"70px", display:"flex", justifyContent:"center", alignItems:"center", borderRadius:"50%"  }} /></td>
             </tr>
           ))}
         </tbody>

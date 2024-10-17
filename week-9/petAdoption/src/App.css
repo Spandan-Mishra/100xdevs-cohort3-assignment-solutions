@@ -22,3 +22,10 @@ tr > td {
     padding: 30px;
     border: solid 1px black;
 }
+
+p {
+    color: red;
+    font-style: italic;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
