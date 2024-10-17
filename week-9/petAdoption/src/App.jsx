@@ -8,11 +8,15 @@ import { useState } from 'react';
 function App() {
   const [pets, setPets] = useState([]);
 
+  const handleAdd = (newPet) => {
+    setPets((prevPets) => ([...prevPets, newPet]));
+  } 
+
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<PetAdoptionForm pets={pets} setPets={setPets} />} />
+        <Route path="/" element={<PetAdoptionForm onAdd={handleAdd} />} />
         <Route path="all" element={<TableData pets={pets}/>} />
       </Routes>
     </BrowserRouter>
