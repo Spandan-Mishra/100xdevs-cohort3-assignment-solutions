@@ -54,6 +54,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+select {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+}
 select:hover {
   border-color: #646cff;
   cursor: pointer;
