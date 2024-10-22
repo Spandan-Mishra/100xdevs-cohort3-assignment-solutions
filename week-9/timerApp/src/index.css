@@ -54,16 +54,19 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-select {
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+input {
+  border: 1px solid rgb(167, 167, 167);
+  border-radius: 10%;
+  padding: 0.4em;
+  width: 1cm;
+  font-size: 1cm;
 }
-select:hover {
+input:hover {
   border-color: #646cff;
   cursor: pointer;
 }
-select:focus,
-select:focus-visible {
+input:focus,
+input:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
