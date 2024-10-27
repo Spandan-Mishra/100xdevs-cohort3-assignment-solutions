@@ -1,6 +1,5 @@
 //  TODO: Can you create backend with standard folder structure like: week-4/hard ???
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require("dotenv").config();
 const { userRouter } = require('./routes/user');
 const { adminRouter } = require('./routes/admin');
