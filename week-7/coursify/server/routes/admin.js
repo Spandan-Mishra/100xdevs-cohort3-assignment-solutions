@@ -19,7 +19,7 @@ adminRouter.post('/admin/signup', async (req, res) => {
             res.status(400).json({ message: parsedData.error });
         }
 
-        const { username, passwrod } = req.body;
+        const { username, password } = req.body;
 
         const hashedPassword = await bcrypt.hash(password);
 
@@ -28,7 +28,7 @@ adminRouter.post('/admin/signup', async (req, res) => {
             password: hashedPassword,
         })
 
-        res.json({
+        res.status(200).json({
             message: "Admin created successfully"
         })
 
