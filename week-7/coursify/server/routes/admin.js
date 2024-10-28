@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const { z } = require('zod');
 const adminMiddleware = require('../middleware/admin')
 const { Admin, Course } = require('../db');
-const admin = require('../middleware/admin');
 const adminSchema = z.object({
     username: z.string().min(3).max(20),
     password: z.string().min(8).max(16)
@@ -16,7 +15,7 @@ const adminSchema = z.object({
 adminRouter.post('/admin/signup', async (req, res) => {
     // logic to sign up admin
     try{
-        const parsedData = userSchema.safeParse(req.body);
+        const parsedData = adminSchema.safeParse(req.body);
         if(!parsedData.success) {
             res.status(400).json({ message: parsedData.error });
         }
@@ -45,7 +44,7 @@ adminRouter.post('/admin/login', async (req, res) => {
     // logic to log in admin
     try{
 
-        const parsedData = userSchema.safeParse(req.body);
+        const parsedData = adminSchema.safeParse(req.body);
         if(!parsedData.success) {
             res.status(400).json({ message: parsedData.error });
         }
@@ -138,9 +137,8 @@ adminRouter.put('/admin/courses/:courseId', adminMiddleware,  async (req, res) =
 
 });
 
-adminRouter.get('/admin/courses', adminMiddleware, async (req, res) => {
+adminRouter.get('/admin/courses', async (req, res) => {
     // logic to get all courses
-
     const courses = await Course.find();
 
     res.status(200).json({
