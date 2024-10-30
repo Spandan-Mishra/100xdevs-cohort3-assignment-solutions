@@ -7,8 +7,17 @@ const bcrypt = require('bcrypt');
 const { z } = require('zod');
 const { User, Course } = require('../db');
 const userSchema = z.object({
-    username: z.string().min(3).max(20),
-    password: z.string().min(8).max(16)
+    username: z
+    .string()
+    .min(3, { message: "Username must be at least 3 characters" })
+    .max(30, { message: "Username  must not exceed 30 characters" }),
+    password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters" })
+    .max(20, { message: "Password must not exceed 20 characters" })
+    .regex(/[A-Z]/, { message: "Password must contain at least one uppercase letter" })
+    .regex(/[a-z]/, { message: "Password must contain at least one lowercase letter" })
+    .regex(/[@#$%&*?!]/, { message: "Password must contain at least one special character" }),
 })
 
 // User routes
@@ -16,8 +25,14 @@ userRouter.post('/users/signup', async (req, res) => {
     // logic to sign up user
     try{
         const parsedData = userSchema.safeParse(req.body);
+        
         if(!parsedData.success) {
-            res.status(400).json({ message: parsedData.error });
+            const error = result.error.errors[0];
+
+            return res.status(400).json({
+                field: error.path[0],
+                message: error.message
+            })
         }
 
         const { username, password } = req.body;
