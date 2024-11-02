@@ -27,11 +27,11 @@ userRouter.post('/users/signup', async (req, res) => {
         const parsedData = userSchema.safeParse(req.body);
         
         if(!parsedData.success) {
-            const error = result.error.errors[0];
-
             return res.status(400).json({
-                field: error.path[0],
-                message: error.message
+                errors: parsedData.error.errors.map((error) => ({
+                    field: error.path[0],
+                    message: error.message
+                }))
             })
         }
 
