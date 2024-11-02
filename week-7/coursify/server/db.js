@@ -40,7 +40,7 @@ const courseSchema = new Schema({
     imageLink: String,
     published: {
         type: Boolean,
-        default: false,
+        default: true,
     },
     creatorId: ObjectId,
 });

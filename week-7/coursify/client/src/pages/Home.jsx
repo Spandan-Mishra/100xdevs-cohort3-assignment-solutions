@@ -1,15 +1,27 @@
 //  implement the home page UI here.
 import React from 'react'
 
-// compoents imports
-import Login from '../components/Login'
-import Register from '../components/Register'
-import Courses from '../components/Courses'
-
 const Home = () => {
+
+  // const navigate = useNavigate();
+
   return (
     //  write home page UI code here
-    <div>Home</div>
+    <>
+      <div className='flex my-40 mx-28'>
+        <div className='flex-1'>
+          <p className='text-9xl albert-sans-400 ml-32 mt-10 px-'>Coursify.</p>
+        </div>
+        <div className='flex-1'>
+          <p className='text-6xl roboto-condensed-400 mt-10 px-36'>
+            Your one stop website to buy and sell courses
+          </p>
+        </div>
+      </div>
+      <div className='text-4xl flex justify-center pt-28 roboto-condensed-400'>
+        <button className='bg-violet-900 hover:bg-violet-950 p-2 rounded-md'>Click to view all available courses!</button>
+      </div>
+    </>
   )
 }
 
