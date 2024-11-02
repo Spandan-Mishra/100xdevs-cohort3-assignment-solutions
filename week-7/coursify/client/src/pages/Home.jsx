@@ -1,9 +1,10 @@
 //  implement the home page UI here.
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     //  write home page UI code here
@@ -19,7 +20,7 @@ const Home = () => {
         </div>
       </div>
       <div className='text-4xl flex justify-center pt-28 roboto-condensed-400'>
-        <button className='bg-violet-900 hover:bg-violet-950 p-2 rounded-md'>Click to view all available courses!</button>
+        <button className='bg-violet-900 hover:bg-violet-950 p-2 rounded-md' onClick={() => navigate("/users/courses")}>Click to view all available courses!</button>
       </div>
     </>
   )
