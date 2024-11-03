@@ -18,13 +18,13 @@ const Navbar = () => {
                 <div className='text-4xl roboto-condensed-400 mr-40'>
                     <select onChange={handleSelectChange} defaultValue="" className='mx-2 px-2 hover:bg-violet-950'>
                         <option value="" disabled>Signup</option>
-                        <option value="/user">User</option>
-                        <option value="/admin" >Admin</option>
+                        <option value="/users/signup">User</option>
+                        <option value="/admin/signup" >Admin</option>
                     </select>
                     <select onChange={handleSelectChange} defaultValue="" className='mx-2 px-2 hover:bg-violet-950'>
                         <option value="" disabled>Login</option>
-                        <option value="/user">User</option>
-                        <option value="/admin">Admin</option>
+                        <option value="/users/login">User</option>
+                        <option value="/admin/login">Admin</option>
                     </select>
                 </div>
             ) : null}
