@@ -1,4 +1,5 @@
 // courses code here
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -20,63 +21,81 @@ const Courses = () => {
           ): null}
         </div>
       ) : null}
+      <div className='h-0.5 bg-zinc-700'></div>
     </>
   )
 }
 
 const Modal = () => {
-  return (
-            <div className='flex justify-center'>
-            <h1 className='roboto-condensed-400 text-7xl text-center mt-40 mb-8'>Signup</h1>
+  const [formData, setFormData] = useState({ title: "", description: "", price: null, imageLink: "" })
 
-            <form onSubmit={handleSignup} className='flex flex-col w-1/3 px-20 py-12'> 
-                <div className='flex flex-col mb-8'>
-                    <label className='inter-italic-400'>Username</label>
-                    <input 
-                        type='text'
-                        name='title'
-                        className='input-long'
-                        value={formData.title}
-                        onChange={handleChange}
-                    />
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const resposnse = await axios.post('/admin/courses', formData);
+      console.log(resposnse);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return (
+          <form onSubmit={handleSubmit} className='flex flex-col pl-20 py-12'> 
+              <div className='flex flex-col mb-8'>
+                  <label className='inter-italic-400'>Title</label>
+                  <input 
+                      type='text'
+                      name='title'
+                      className='input-long'
+                      value={formData.title}
+                      onChange={handleChange}
+                  />
+              </div>
+              <div className='flex flex-col mb-8'>
+                  <label className='inter-italic-400'>Description</label>
+                  <input 
+                      type='text'
+                      name='description'
+                      className='input-big'
+                      value={formData.description}
+                      onChange={handleChange}
+                  />
+              </div>
+              <div className='flex mb-8'>
+                <div className='flex flex-col'>
+                  <label className='inter-italic-400'>Price</label>
+                  <input 
+                      type='text'
+                      name='price'
+                      className='input-short'
+                      value={formData.price}
+                      onChange={handleChange}
+                  />
                 </div>
                 <div className='flex flex-col'>
-                    <label className='inter-italic-400'>Password</label>
-                    <input 
-                        type='text'
-                        name='description'
-                        className='input-long'
-                        value={formData.description}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className='flex'>
-                  <div className='flex flex-col'>
-                    <label className='inter-italic-400'>Password</label>
-                    <input 
-                        type='text'
-                        name='price'
-                        className='input-long'
-                        value={formData.price}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className='flex flex-col'>
-                    <label className='inter-italic-400'>Password</label>
+                    <label className='inter-italic-400'>Image Link</label>
                     <input 
                         type='text'
                         name='imageLink'
-                        className='input-long'
+                        className='input-short'
                         value={formData.imageLink}
                         onChange={handleChange}
                     />
                 </div>
-                </div>
-                <div className='flex justify-center mt-8'>
-                    <button className='roboto-condensed-400 text-3xl bg-violet-900 hover:bg-violet-950 py-2 w-24 rounded-md'>Submit</button>
-                </div>
-            </form>
-        </div>
+              </div>
+              <div className='flex pl-48'>
+                  <button className='roboto-condensed-400 text-3xl bg-violet-900 hover:bg-violet-950 py-2 w-24 rounded-md'>Submit</button>
+              </div>
+          </form>
   )
 }
 

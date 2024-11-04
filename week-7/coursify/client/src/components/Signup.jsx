@@ -26,7 +26,7 @@ const Signup = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`http://localhost:3000${location.pathname}`, formData);
+            const response = await axios.post(location.pathname, formData);
             console.log(response);
         } catch(error) {
             if (error.response && error.response.status === 400) {

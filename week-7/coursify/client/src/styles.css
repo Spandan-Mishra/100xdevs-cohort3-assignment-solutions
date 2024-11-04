@@ -65,3 +65,27 @@ label {
     padding-left: 20px;
     font-size: larger;
 }
+
+.input-short {
+    width: 200px;
+    height: 59px;
+    background-color: #090116;
+    border: white solid 1px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: larger;
+    margin-right: 86px;
+}
+
+.input-big {
+    width: 477px;
+    height: 120px;
+    background-color: #090116;
+    border: white solid 1px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: larger;
+    margin-right: 86px;
+}
