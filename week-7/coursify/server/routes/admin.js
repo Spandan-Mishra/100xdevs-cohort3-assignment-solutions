@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 const bcrypt = require('bcrypt');
 const { z } = require('zod');
-const adminMiddleware = require('../middleware/admin')
+const { adminMiddleware } = require('../middleware/admin')
 const { Admin, Course } = require('../db');
 const adminSchema = z.object({
     username: z
@@ -92,6 +92,7 @@ adminRouter.post('/admin/login', async (req, res) => {
         res.json({
             message: "Logged in successfully",
             token: token,
+            id: admin._id.toString(),
         })
 
     } catch(e) {

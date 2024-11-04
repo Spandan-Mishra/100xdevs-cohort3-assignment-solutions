@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const userRouter = Router();
-const userMiddleware = require('../middleware/user');
+const { userMiddleware } = require('../middleware/user');
 const jwt = require('jsonwebtoken');
 const USER_SECRET = process.env.USER_SECRET;
 const bcrypt = require('bcrypt');
@@ -90,6 +90,7 @@ userRouter.post('/users/login', async (req, res) => {
         res.json({
             message: "User logged in successfully",
             token: token,
+            id: user._id.toString(),
         })
     } catch(e) {
         res.status(400).json({

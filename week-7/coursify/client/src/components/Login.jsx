@@ -1,12 +1,13 @@
 // login code here
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const Login = () => {
-    const [formData, setFormData] = useState({ username: "", email: "" });
-    const [errors, setErrors] = useState({ username: "", email: "" });
+    const [formData, setFormData] = useState({ username: "", password: "" });
+    const [errors, setErrors] = useState({ username: "", password: "" });
     const location = useLocation();
+    const { role } = useParams();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,7 +26,9 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(location.pathname, formData);
+            const response = await axios.post(`http://localhost:3000/${role}/login`, formData);
+            const data = await response.json();
+            localStorage.setItem(`${role}Id`, data.id);
             console.log(response);
         } catch(error) {
             if (error.response && error.response.status === 400) {
