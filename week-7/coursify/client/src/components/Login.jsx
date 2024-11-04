@@ -41,28 +41,35 @@ const Login = () => {
     return (
         <>
             <h1 className='roboto-condensed-400 text-7xl text-center mt-40 mb-8'>Login</h1>
-            <form onSubmit={handleLogin} className='flex flex-col items-center'> 
-                <div className='flex flex-col'>
-                    <label>Username:</label>
-                    <input 
-                        type='text'
-                        name='username'
-                        value={formData.username}
-                        onChange={handleChange}
-                    />
-                    {errors.username && <p>{errors.username}</p>}
-                </div>
-                <div className='flex flex-col'>
-                    <label>Password:</label>
-                    <input 
-                        type='text'
-                        name='password'
-                        value={formData.password}
-                        onChange={handleChange}
-                    />
-                    {errors.password && <p>{errors.password}</p>}
-                </div>
-            </form>
+            <div className='flex justify-center'>
+                <form onSubmit={handleLogin} className='flex flex-col w-1/3 px-20 py-12'> 
+                    <div className='flex flex-col mb-8'>
+                        <label className='inter-italic-400'>Username</label>
+                        <input 
+                            type='text'
+                            name='username'
+                            className='input-long'
+                            value={formData.username}
+                            onChange={handleChange}
+                        />
+                        {errors.username && <p>{errors.username}</p>}
+                    </div>
+                    <div className='flex flex-col'>
+                        <label className='inter-italic-400'>Password</label>
+                        <input 
+                            type='text'
+                            name='password'
+                            className='input-long'
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                        {errors.password && <p>{errors.password}</p>}
+                    </div>
+                    <div className='flex justify-center mt-8'>
+                        <button className='roboto-condensed-400 text-3xl bg-violet-900 hover:bg-violet-950 py-2 w-24 rounded-md'>Submit</button>
+                    </div>
+                </form>
+            </div>
         </>
     )
 }
