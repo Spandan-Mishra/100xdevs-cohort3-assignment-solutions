@@ -28,6 +28,12 @@ const Navbar = () => {
                     </select>
                 </div>
             ) : null}
+            {location.pathname === "/users/courses" ? (
+                <button onClick={() => navigate("/users/purchasedCourses")} className='roboto-condensed-400 text-3xl bg-violet-900 hover:bg-violet-950 p-2 mr-32 rounded-md'>purchased courses</button>
+            ) : null}
+            {location.pathname === "/users/purchasedCourses" ? (
+                <button onClick={() => navigate("/users/courses")} className='roboto-condensed-400 text-3xl bg-violet-900 hover:bg-violet-950 p-2 mr-32 rounded-md'>all courses</button>
+            ) : null}
         </nav>
     )
 }

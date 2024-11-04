@@ -29,6 +29,13 @@
   font-style: italic;
 }
 
+.inter-400 {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: none;
+}
+
 body {
     background-color: #070111;
     color: white;
