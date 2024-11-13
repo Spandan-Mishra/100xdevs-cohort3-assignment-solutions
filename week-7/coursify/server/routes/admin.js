@@ -21,7 +21,7 @@ const adminSchema = z.object({
 })
 
 // Admin routes
-adminRouter.post('/admin/signup', async (req, res) => {
+adminRouter.post('/signup', async (req, res) => {
     // logic to sign up admin
     try{
         const parsedData = adminSchema.safeParse(req.body);
@@ -55,7 +55,7 @@ adminRouter.post('/admin/signup', async (req, res) => {
     }
 });
 
-adminRouter.post('/admin/login', async (req, res) => {
+adminRouter.post('/login', async (req, res) => {
     // logic to log in admin
     try{
 
@@ -102,7 +102,7 @@ adminRouter.post('/admin/login', async (req, res) => {
     }  
 });
 
-adminRouter.post('/admin/courses', adminMiddleware, async (req, res) => {
+adminRouter.post('/courses', adminMiddleware, async (req, res) => {
     // logic to create a course
     const { title, description, price, imageLink, published } = req.body;
 
@@ -124,7 +124,7 @@ adminRouter.post('/admin/courses', adminMiddleware, async (req, res) => {
 
 });
 
-adminRouter.put('/admin/courses/:courseId', adminMiddleware,  async (req, res) => {
+adminRouter.put('/courses/:courseId', adminMiddleware,  async (req, res) => {
     // logic to edit a course
     const courseId = req.params.courseId;
     const adminId = req.id;
@@ -153,7 +153,7 @@ adminRouter.put('/admin/courses/:courseId', adminMiddleware,  async (req, res) =
 
 });
 
-adminRouter.get('/admin/courses', async (req, res) => {
+adminRouter.get('/courses', async (req, res) => {
     // logic to get all courses
     const courses = await Course.find();
 

@@ -21,7 +21,7 @@ const userSchema = z.object({
 })
 
 // User routes
-userRouter.post('/users/signup', async (req, res) => {
+userRouter.post('/signup', async (req, res) => {
     // logic to sign up user
     try{
         const parsedData = userSchema.safeParse(req.body);
@@ -54,7 +54,7 @@ userRouter.post('/users/signup', async (req, res) => {
     }
 });
 
-userRouter.post('/users/login', async (req, res) => {
+userRouter.post('/login', async (req, res) => {
     // logic to log in user
     try {
         const parsedData = userSchema.safeParse(req.body);
@@ -99,16 +99,16 @@ userRouter.post('/users/login', async (req, res) => {
     }
 });
 
-userRouter.get('/users/courses', async (req, res) => {
+userRouter.get('/courses', async (req, res) => {
     // logic to list all courses
     const courses = await Course.find();
 
     res.status(200).json({
-        course: courses,
+        courses: courses,
     })
 });
 
-userRouter.post('/users/courses/:courseId', userMiddleware, async (req, res) => {
+userRouter.post('/courses/:courseId', userMiddleware, async (req, res) => {
     // logic to purchase a course
     const courseId = req.params.courseId;
     const userId = req.id;
@@ -130,7 +130,7 @@ userRouter.post('/users/courses/:courseId', userMiddleware, async (req, res) => 
     }
 });
 
-userRouter.get('/users/purchasedCourses', userMiddleware, async (req, res) => {
+userRouter.get('/purchasedCourses', userMiddleware, async (req, res) => {
     // logic to view purchased courses
     const userId = req.id;
     try{

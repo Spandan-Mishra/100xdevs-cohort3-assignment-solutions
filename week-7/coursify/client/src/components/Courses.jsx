@@ -14,9 +14,10 @@ const Courses = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${role}/courses`);
-      const data = await response.json();
-      setCourses(data);
+      await axios.get(`http://localhost:3000/courses`)
+      .then((response) => {
+        setCourses(response.data);
+      })
     } catch (error) {
       console.log(error);
     }
@@ -40,14 +41,14 @@ const Courses = () => {
       <div className='h-px bg-zinc-800 mt-20'></div>
       <div className='flex flex-wrap justify-center '>
         {courses.map((course) => {
-          <CourseCard course={course} />
+          <CourseCard course={course} role={role}/>
         })}
       </div>
     </>
   )
 }
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, role }) => {
 
   const navigate = useNavigate();
 
@@ -63,9 +64,9 @@ const CourseCard = ({ course }) => {
         {role === "users" ? (
           <button onClick={() => handleBuy(course._id)} className='inter-italic-400 bg-black text-white p-2 rounded-md'>BUY</button>
         ) : null}
-        {localStorage.getItem("adminId") === course.creatorId ? (
+        {/* {localStorage.getItem("adminId") === course.creatorId ? (
           <button onClick={handleEdit} className='inter-italic-400 bg-black text-white p-2 rounded-md'>EDIT</button>
-        ) : null}
+        ) : null} */}
       </div>
       <div className='h-px bg-black w-full'></div>
       <p className='inter-italic-400'>{course.description}</p>
@@ -88,7 +89,7 @@ const Modal = () => {
     e.preventDefault();
 
     try {
-      const resposnse = await axios.post('/admin/courses', formData);
+      const resposnse = await axios.post(`http://localhost:3000/admin/courses`, formData);
       console.log(resposnse);
     } catch (error) {
       console.log(error);

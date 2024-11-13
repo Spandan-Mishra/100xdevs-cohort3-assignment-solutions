@@ -8,62 +8,64 @@ const PetAdoptionForm = ({ onAdd }) => {
   const [formData, setFormData] = useState({name:"", type:"", breed:"", owner:"", contact:"", image:""});
   const [error, setError] = useState({nameError:"", typeError:"", breedError:"", ownerError:"", contactError:"", imageError:""});
 
-  const isValid = (pets, e, checkAll) => {
-    if((checkAll || e.target.name == "name") && pets.name.length < 3) {
-      setError((prevError) => ({
+  const isValid = async (pets, e, checkAll) => {
+    if((checkAll || e.target.name == "name") && pets.name.length < 3 ) {
+      await setError((prevError) => ({
         ...prevError,
         nameError: "Pet name should be at least 3 characters long"
       }))
     } else {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         nameError: ""
       }))
     }
 
     if((checkAll || e.target.name == "type") && pets.type.length < 3) {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         typeError: "Pet type should be at least 3 characters long"
       }))
     } else {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         typeError: ""
       }))
     }
 
     if((checkAll || e.target.name == "breed") && pets.breed.length < 3) {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         breedError: "Pet breed should be at least 3 characters long"
       }))
     } else {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         breedError: ""
       }))
     }
 
     if((checkAll || e.target.name == "owner") && pets.owner.length < 3) {
-      setError((prevError) => ({
+      console.log(pets.owner.length)
+      await setError((prevError) => ({
         ...prevError,
         ownerError: "Owner name should be at least 3 characters long"
       }))
     } else {
-      setError((prevError) => ({
-        ...prevError,
+      await setError((prevError) => ({
+        ...prevError
         ownerError: ""
       }))
     }
 
-    if((checkAll || e.target.name == "contact") && pets.contact.length !== 10 && /^\d+$/g.test(pets.contact) == false) {
-      setError((prevError) => ({
+    if((checkAll || e.target.name == "contact") && pets.contact.length != 10 && /^\d+$/.test(pets.contact) == false) {
+      console.log(/^\d+$/.test(pets.contact) == false)
+      await setError((prevError) => ({
         ...prevError,
         contactError: "Contact no. should be at least 10 characters long (only numbers)"
       }))
     } else {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         contactError: ""
       }))
@@ -71,12 +73,12 @@ const PetAdoptionForm = ({ onAdd }) => {
     
     const isValidImageUrl = pets.image.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
     if((checkAll || e.target.name == "image") && isValidImageUrl == null) {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         imageError: "Please enter a valid image URL"
       }))
     } else {
-      setError((prevError) => ({
+      await setError((prevError) => ({
         ...prevError,
         imageError: ""
       }))
@@ -99,6 +101,7 @@ const PetAdoptionForm = ({ onAdd }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value
