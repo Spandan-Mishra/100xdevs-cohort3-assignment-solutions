@@ -65,7 +65,7 @@ const RandomUser = () => {
 
 const User = ({ user }) => {
   return (
-    <div className='flex flex-col justify-center items-center py-5 border rounded-lg gap-2 w-72 h-52'>
+    <div className='flex flex-col justify-center items-center py-5 border rounded-lg gap-2 w-72 h-52 bg-teal-600 border-black border-2'>
       <img src={user.picture.medium} className='rounded-full w-20 h-20' alt="user" />
       <h1 className='text-2xl'>{user.name.first} {user.name.last}</h1>
     </div>
